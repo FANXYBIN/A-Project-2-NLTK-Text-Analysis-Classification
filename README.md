@@ -69,5 +69,5 @@ Despite modest performance, the model captured stylistic variation between chapt
 - Supervised text classification using **Naive Bayes**  
 - Evaluation and linguistic interpretation of text patterns  
 
-📓 [View Jupyter Notebook](notebooks/NLTK_Alice.ipynb)
+📓 [View Jupyter Notebook](NLTK_Alice.ipynb)
 
