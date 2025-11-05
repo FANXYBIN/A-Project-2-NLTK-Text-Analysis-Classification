@@ -1,69 +1,73 @@
 ### A-Project 2: NLTK Text Analysis & Classification — *Alice in Wonderland*
 
-This project used **Natural Language Toolkit (NLTK)** to perform comprehensive text analysis and a classification experiment based on *Alice’s Adventures in Wonderland* by Lewis Carroll.  
-The objective was to reproduce the official NLTK tutorial steps on tokenization, lemmatization, and part-of-speech tagging — and extend it with a **custom text classification** task using sections of the novel as data.
+This project applied **Natural Language Processing (NLP)** techniques using **NLTK** and **scikit-learn** to analyze and classify text from *Alice’s Adventures in Wonderland* by Lewis Carroll.  
+The goal was to explore linguistic patterns and train a model to classify chapters based on word usage and stylistic features.
 
-* **Dataset:** *Alice’s Adventures in Wonderland* (from Project Gutenberg).  
-* **Tools:** Python, NLTK, scikit-learn, matplotlib, wordcloud.  
-* **Techniques:** Tokenization, stopword removal, lemmatization, POS tagging, TF–IDF vectorization, text classification.  
-* **Goal:** Explore linguistic structure and build a classifier to distinguish between different sections/chapters of the novel.
+* **Dataset:** *Alice’s Adventures in Wonderland* (Project Gutenberg)  
+* **Tools:** Python, NLTK, scikit-learn, CountVectorizer, matplotlib  
+* **Techniques:** Tokenization, stopword removal, lemmatization, vectorization, Naive Bayes classification  
+* **Goal:** Identify vocabulary trends across chapters and evaluate classification accuracy.
 
 ---
 
 ### ⚙️ Text Preprocessing
-1. **Load text:** Imported directly from NLTK’s Gutenberg corpus (`nltk.corpus.gutenberg.raw('carroll-alice.txt')`).  
-2. **Tokenization:** `nltk.word_tokenize()` split the text into ~27k tokens.  
-3. **Stopword removal:** Filtered using `nltk.corpus.stopwords.words('english')`.  
-4. **Lemmatization:** Used `WordNetLemmatizer()` to unify word forms.  
-5. **POS Tagging:** Tagged tokens to examine patterns (e.g., high frequency of nouns, proper nouns, and verbs of speech).  
+1. **Download text:** Retrieved from Project Gutenberg using `requests`.  
+2. **Clean content:** Removed special characters and headers.  
+3. **Split into chapters:** Used regex to identify Roman numeral chapter headings.  
+4. **Tokenize & remove stopwords:** NLTK’s `word_tokenize()` and `stopwords`.  
+5. **Vectorize:** Converted text into numerical features using `CountVectorizer`.
+
+---
+
+### 🧩 Vocabulary Construction
+Custom stopword lists were merged and applied to extract the most representative words.  
+Each token received a unique index in the vocabulary using **CountVectorizer**.
 
 <div align="center">
-  <img src="images/alice_wordcloud.png" alt="Word Cloud of Alice in Wonderland" width="500"/>
-  <p><em>Word cloud showing dominant terms and character mentions.</em></p>
+  <img src="images/NLTK_stopword lists.png" alt="Vocabulary construction code" width="500"/>
+  <p><em>Vocabulary generation with token–ID mapping for words in the corpus.</em></p>
 </div>
 
 ---
 
 ### 🧪 Classification Experiment
-The classification task divided the novel into **10 equal sections** and trained a model to identify which section a given text snippet came from.
+Each chapter was treated as a labeled text sample.  
+A **Multinomial Naive Bayes** classifier was trained to predict which chapter a given excerpt belonged to.
 
-**Steps:**
-- Converted each text section into TF–IDF features using `TfidfVectorizer()`.  
-- Split data into train/test sets using `train_test_split(test_size=0.2)`.  
-- Trained multiple models:
-  - Multinomial Naive Bayes  
-  - Logistic Regression  
-  - Linear SVM  
-
-**Best model:** Linear SVM (C=1.0, linear kernel)  
-**Accuracy:** ~89% on held-out test data  
-**Key features:** Section-level differences in dialogue frequency, character mentions (“Alice,” “Queen,” “Hatter”), and emotional verbs.
+**Process:**
+- Converted chapters to numerical vectors.  
+- Split dataset into **train (70%)** and **test (30%)** sets.  
+- Trained the model and evaluated prediction accuracy.
 
 <div align="center">
-  <img src="images/alice_confusion_matrix.png" alt="Confusion Matrix for Section Classification" width="550"/>
-  <p><em>Confusion matrix showing strong classification accuracy across sections.</em></p>
+  <img src="images/NLTK_report.png" alt="Model training and evaluation" width="600"/>
+  <p><em>Model training and classification report with 0.375 accuracy.</em></p>
 </div>
+
+| Metric | Value |
+|---------|-------|
+| Accuracy | 0.38 |
+| Macro Avg Precision | 0.25 |
+| Macro Avg Recall | 0.30 |
+| Weighted Avg F1 | 0.33 |
+
+Despite modest performance, the model captured stylistic variation between chapters—such as vocabulary density and dialogue frequency.
 
 ---
 
-### 📊 Text Insights
-- The most common nouns include “Alice,” “Queen,” “time,” and “King.”  
-- Verbs of motion (“run,” “go,” “come”) and speech (“said,” “replied”) dominate the narrative.  
-- Distinct vocabulary patterns distinguish dialogue-heavy and descriptive chapters.  
-- Classification demonstrates measurable stylistic variation across the story’s structure.
-
-<div align="center">
-  <img src="images/alice_pos_distribution.png" alt="POS Distribution in Alice in Wonderland" width="550"/>
-  <p><em>Distribution of parts of speech across the text, highlighting heavy noun–verb usage.</em></p>
-</div>
+### 📊 Linguistic Insights
+- Frequent nouns: **Alice, Queen, King, Rabbit, Time**  
+- Frequent verbs: **said, thought, went, replied**  
+- Dialogue-heavy chapters contain more pronouns and verbs.  
+- Later chapters emphasize descriptive adjectives and nouns.
 
 ---
 
 ### 🧠 Skills Demonstrated
-- NLTK-based text preprocessing and POS analysis  
-- TF–IDF vectorization and feature engineering  
-- Text classification and model evaluation  
-- Visualization of linguistic patterns (word clouds, POS histograms)
+- Text preprocessing and tokenization using **NLTK**  
+- Feature extraction with **CountVectorizer**  
+- Supervised text classification using **Naive Bayes**  
+- Evaluation and linguistic interpretation of text patterns  
 
-📓 [View Jupyter Notebook](notebooks/EAI6000_Module_6.ipynb)
+📓 [View Jupyter Notebook](notebooks/NLTK_Alice.ipynb)
 
