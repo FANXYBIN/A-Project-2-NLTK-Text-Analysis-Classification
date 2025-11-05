@@ -1,6 +1,4 @@
 ### A-Project 2: NLTK Text Analysis & Classification — *Alice in Wonderland*
-<details>
-<summary>🧠 Click to view project details</summary>
 
 This project used **Natural Language Toolkit (NLTK)** to perform comprehensive text analysis and a classification experiment based on *Alice’s Adventures in Wonderland* by Lewis Carroll.  
 The objective was to reproduce the official NLTK tutorial steps on tokenization, lemmatization, and part-of-speech tagging — and extend it with a **custom text classification** task using sections of the novel as data.
@@ -69,4 +67,3 @@ The classification task divided the novel into **10 equal sections** and trained
 
 📓 [View Jupyter Notebook](notebooks/EAI6000_Module_6.ipynb)
 
-</details>
