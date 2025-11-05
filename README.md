@@ -1,4 +1,4 @@
-### A-Project 2: NLTK Text Analysis & Classification — *Alice in Wonderland*
+# A-Project 2: NLTK Text Analysis & Classification — *Alice in Wonderland*
 
 This project applied **Natural Language Processing (NLP)** techniques using **NLTK** and **scikit-learn** to analyze and classify text from *Alice’s Adventures in Wonderland* by Lewis Carroll.  
 The goal was to explore linguistic patterns and train a model to classify chapters based on word usage and stylistic features.
